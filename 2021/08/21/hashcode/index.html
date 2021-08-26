@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>static | Hexo</title>
+  <title>hashcode | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="1、修饰类修饰内部类（普通类不能用static） 2、修饰方法static方法中没有this引用；代码存放在方法区 3、修饰代码块静态代码块在类第一次被载入时执行 4、修饰变量存放在方法区">
+  <meta name="description" content="1、System.java中的public static native int identityHashCode(Object x)方法其C++源码如下 123456789101112131415161718192021222324252627282930313233return JVM_IHashCode(env, x);&#x2F;&#x2F; 这是在jvm.cpp中的方法JVM_ENTRY(jint, JVM_">
 <meta property="og:type" content="article">
-<meta property="og:title" content="static">
-<meta property="og:url" content="http://example.com/2021/08/05/static/index.html">
+<meta property="og:title" content="hashcode">
+<meta property="og:url" content="http://example.com/2021/08/21/hashcode/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1、修饰类修饰内部类（普通类不能用static） 2、修饰方法static方法中没有this引用；代码存放在方法区 3、修饰代码块静态代码块在类第一次被载入时执行 4、修饰变量存放在方法区">
+<meta property="og:description" content="1、System.java中的public static native int identityHashCode(Object x)方法其C++源码如下 123456789101112131415161718192021222324252627282930313233return JVM_IHashCode(env, x);&#x2F;&#x2F; 这是在jvm.cpp中的方法JVM_ENTRY(jint, JVM_">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-08-05T13:23:19.000Z">
-<meta property="article:modified_time" content="2021-08-09T04:17:24.984Z">
+<meta property="article:published_time" content="2021-08-20T17:26:33.000Z">
+<meta property="article:modified_time" content="2021-08-22T04:26:23.165Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="java源码">
 <meta name="twitter:card" content="summary">
@@ -74,10 +74,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-static" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-hashcode" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/08/05/static/" class="article-date">
-  <time class="dt-published" datetime="2021-08-05T13:23:19.000Z" itemprop="datePublished">2021-08-05</time>
+    <a href="/2021/08/21/hashcode/" class="article-date">
+  <time class="dt-published" datetime="2021-08-20T17:26:33.000Z" itemprop="datePublished">2021-08-21</time>
 </a>
     
   </div>
@@ -88,7 +88,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      static
+      hashcode
     </h1>
   
 
@@ -96,15 +96,16 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>1、修饰类<br>修饰内部类（普通类不能用static）</p>
-<p>2、修饰方法<br>static方法中没有this引用；<br>代码存放在方法区</p>
-<p>3、修饰代码块<br>静态代码块在类第一次被载入时执行</p>
-<p>4、修饰变量<br>存放在方法区</p>
+        <p>1、System.java中的public static native int identityHashCode(Object x)方法<br>其C++源码如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">JVM_IHashCode</span>(env, x);</span><br><span class="line"><span class="comment">// 这是在jvm.cpp中的方法</span></span><br><span class="line"><span class="built_in">JVM_ENTRY</span>(jint, <span class="built_in">JVM_IHashCode</span>(JNIEnv* env, jobject handle))</span><br><span class="line">  <span class="built_in">JVMWrapper</span>(<span class="string">&quot;JVM_IHashCode&quot;</span>);</span><br><span class="line">  <span class="comment">// as implemented in the classic virtual machine; return 0 if object is NULL</span></span><br><span class="line">  <span class="keyword">return</span> handle == <span class="literal">NULL</span> ? <span class="number">0</span> : ObjectSynchronizer::<span class="built_in">FastHashCode</span> (THREAD, JNIHandles::<span class="built_in">resolve_non_null</span>(handle)) ;</span><br><span class="line"></span><br><span class="line"><span class="comment">// jniHandler.hpp文件中定义</span></span><br><span class="line">  <span class="function"><span class="keyword">inline</span> oop <span class="title">JNIHandles::resolve_non_null</span><span class="params">(jobject handle)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">assert</span>(handle != <span class="literal">NULL</span>, <span class="string">&quot;JNI handle should not be null&quot;</span>);</span><br><span class="line">  oop result = *(oop*)handle;</span><br><span class="line">  <span class="built_in">assert</span>(result != <span class="literal">NULL</span>, <span class="string">&quot;Invalid value read from jni handle&quot;</span>);</span><br><span class="line">  <span class="built_in">assert</span>(result != badJNIHandle, <span class="string">&quot;Pointing to zapped jni handle area&quot;</span>);</span><br><span class="line">  <span class="comment">// Don&#x27;t let that private _deleted_handle object escape into the wild.</span></span><br><span class="line">  <span class="built_in">assert</span>(result != <span class="built_in">deleted_handle</span>(), <span class="string">&quot;Used a deleted global handle.&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// synchronizer.cpp定义</span></span><br><span class="line"><span class="function"><span class="keyword">intptr_t</span> <span class="title">ObjectSynchronizer::FastHashCode</span> <span class="params">(Thread * Self, oop obj)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (UseBiasedLocking) &#123;</span><br><span class="line">    <span class="keyword">if</span> (obj-&gt;<span class="built_in">mark</span>()-&gt;<span class="built_in">has_bias_pattern</span>()) &#123;</span><br><span class="line">      <span class="comment">// Box and unbox the raw reference just in case we cause a STW safepoint.</span></span><br><span class="line">      <span class="function">Handle <span class="title">hobj</span> <span class="params">(Self, obj)</span> </span>;</span><br><span class="line">      <span class="comment">// Relaxing assertion for bug 6320749.</span></span><br><span class="line">      <span class="built_in">assert</span> (Universe::<span class="built_in">verify_in_progress</span>() ||</span><br><span class="line">              !SafepointSynchronize::<span class="built_in">is_at_safepoint</span>(),</span><br><span class="line">             <span class="string">&quot;biases should not be seen by VM thread here&quot;</span>);</span><br><span class="line">      BiasedLocking::<span class="built_in">revoke_and_rebias</span>(hobj, <span class="literal">false</span>, JavaThread::<span class="built_in">current</span>());</span><br><span class="line">      obj = <span class="built_in">hobj</span>() ;</span><br><span class="line">      <span class="built_in">assert</span>(!obj-&gt;<span class="built_in">mark</span>()-&gt;<span class="built_in">has_bias_pattern</span>(), <span class="string">&quot;biases should be revoked by now&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/05/static/" data-id="ckryyalr70002v4tr22eoazsh" data-title="static" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/08/21/hashcode/" data-id="ckssb36p40001ygtr2uttdhp5" data-title="hashcode" class="article-share-link">Share</a>
       
       
       
@@ -116,19 +117,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/08/06/%E7%BE%8E%E5%9B%A2%E6%8F%90%E5%89%8D%E6%89%B9%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%BA%8C%E9%9D%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/08/22/PriorityQueue/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          美团提前批移动端二面
+          PriorityQueue
         
       </div>
     </a>
   
   
-    <a href="/2021/08/05/ThreadPool/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/08/19/test2/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">ThreadPool</div>
+      <div class="article-nav-title">test2</div>
     </a>
   
 </nav>

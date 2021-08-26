@@ -71,6 +71,470 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-DynamicProcess学习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/24/DynamicProcess%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time class="dt-published" datetime="2021-08-24T15:00:39.000Z" itemprop="datePublished">2021-08-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/24/DynamicProcess%E5%AD%A6%E4%B9%A0/">DynamicProgram学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>确定状态<ul>
+<li>研究最优策略的最后一步</li>
+<li>化为子问题</li>
+</ul>
+</li>
+<li>转移方程<ul>
+<li>根据子问题定义直接得到</li>
+</ul>
+</li>
+<li>初始条件和边界情况<ul>
+<li>细心，考虑周全</li>
+</ul>
+</li>
+<li>计算顺序<ul>
+<li>利用之前的计算结果</li>
+</ul>
+</li>
+</ul>
+<p>常见动态规划类型 </p>
+<ul>
+<li>坐标型动态规划 20</li>
+<li>序列性动态规划 20</li>
+<li>划分型动态规划 20</li>
+<li>区间型动态规划 15</li>
+<li>背包型动态规划 10</li>
+<li>最长序列型动态规划 5</li>
+<li>博弈型动态规划 5</li>
+<li>综合型动态规划 5</li>
+</ul>
+<p>动态规划题目特点</p>
+<ul>
+<li>1、计数<ul>
+<li>有多少中方式走到右下角</li>
+<li>有多少种方式选出K个数，使得和为Sum</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>2、求最大最小值<ul>
+<li>从左上角走到右下角路径的最大数字和</li>
+<li>最长上升子序列长度</li>
+</ul>
+</li>
+<li>3、求存在性<ul>
+<li>取石子游戏，先手是否必胜</li>
+<li>能不能选出k个数使得和是Sum</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/24/DynamicProcess%E5%AD%A6%E4%B9%A0/" data-id="ckssb36p70005ygtr13td5rni" data-title="DynamicProgram学习" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-MySQL01" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/23/MySQL01/" class="article-date">
+  <time class="dt-published" datetime="2021-08-23T06:56:49.000Z" itemprop="datePublished">2021-08-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/23/MySQL01/">MySQL01</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>JavaEE :企业级开发 web<br>前端：页面展示<br>后台：连接点，连接数据库JDBC，链接前端（控制，控制视图跳转，和给前端传递数据）<br>数据库（存数据，Txt，Excel，word）</p>
+<h3 id="1-1-数据库分类"><a href="#1-1-数据库分类" class="headerlink" title="1.1 数据库分类"></a>1.1 数据库分类</h3><p>关系型数据库：</p>
+<ul>
+<li>MySQL、Oracle、SqlServer、DB2、SQLite</li>
+<li>通过表和表之间，行和列之间的关系进行数据的存储<br>非关系型数据库：</li>
+<li>Redis，MongDB</li>
+<li>非关系型数据库，对象存储，通过对象的自身属性来决定</li>
+</ul>
+<p>DBMS(数据库管理系统)</p>
+<ul>
+<li>数据库管理软件，科学有效的管理数据库</li>
+<li>MySQL，数据库管理系统</li>
+</ul>
+<p>安装建议：尽量不安装exe，尽量安装zip</p>
+<h3 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql <span class="operator">-</span>uroot <span class="operator">-</span>p password  <span class="comment">--连接数据库</span></span><br><span class="line">flush privileges;   <span class="comment">-- 刷新权限</span></span><br><span class="line"><span class="keyword">show</span> tables;   <span class="comment">-- 查询数据库所有的表</span></span><br><span class="line"><span class="keyword">describe</span> student; <span class="comment">-- 显示数据库中所有表的信息</span></span><br><span class="line"><span class="keyword">create</span> database database_name; <span class="comment">--- 创建数据库</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>DDL:数据库定义语言</li>
+<li>DML：数据库操作语言</li>
+<li>DQL：数据库查询语言</li>
+<li>DCL：数据库控制语言</li>
+</ul>
+<h2 id="2-操作数据库"><a href="#2-操作数据库" class="headerlink" title="2. 操作数据库"></a>2. 操作数据库</h2><p>1.创建数据库: create database if not exists database_name<br>2.删除数据库：drop database if exists database_name<br>3.使用数据库: use database_name;</p>
+<hr>
+<p>如果表名或者属性名是一个特殊字符，用TAB键上的``包含这个特殊字符</p>
+<h3 id="2-2-数据库的列类型"><a href="#2-2-数据库的列类型" class="headerlink" title="2.2 数据库的列类型"></a>2.2 数据库的列类型</h3><blockquote>
+<p>数值</p>
+</blockquote>
+<ul>
+<li>tinyint  十分小的数据</li>
+<li>smallint  较小的数据  2个字节</li>
+<li>mediumint 中等大小数据 3个字节</li>
+<li><strong>int       标准整数    4个字节</strong> （这是可显示宽度） int(3)，比如001，021，333，232343</li>
+<li>bigint    较大的数据  8个字节</li>
+<li>float    浮点数       4个字节</li>
+<li>double   浮点数       8个字节</li>
+<li>decimal  字符串形势的浮点数  金融计算时，一般用decimal</li>
+</ul>
+<blockquote>
+<p>字符串</p>
+</blockquote>
+<ul>
+<li>char    0-255   1字节</li>
+<li><strong>varchar   可变字符串   0-65535  常用</strong></li>
+<li>tinytext  微型文本     2^8-1</li>
+<li><strong>text      文本串       2^16-1</strong></li>
+</ul>
+<blockquote>
+<p>时间日期</p>
+</blockquote>
+<ul>
+<li>date    YYYY-MM-DD, 日期格式</li>
+<li>time     HH:mm:ss 时间格式</li>
+<li>datetime YYYY-MM-DD HH:mm:ss 最常用的时间格式</li>
+<li>timestamp 时间戳  </li>
+<li>year</li>
+</ul>
+<blockquote>
+<p>null<br>一般不要用null进行运算</p>
+</blockquote>
+<h3 id="2-3-数据库的字段属性"><a href="#2-3-数据库的字段属性" class="headerlink" title="2.3 数据库的字段属性"></a>2.3 数据库的字段属性</h3><p><img src="https://raw.githubusercontent.com/StarUnderNight/test/main/QQ%E6%88%AA%E5%9B%BE20210823184936.png" alt="数据库的字段属性"><br>version  乐观锁<br>is_delete 伪删除<br>qmt_create 创建时间<br>gmt_update 修改时间</p>
+<h3 id="2-4-建表"><a href="#2-4-建表" class="headerlink" title="2.4 建表"></a>2.4 建表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> student (</span><br><span class="line">	`id` <span class="type">INT</span>(<span class="number">4</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;学号&#x27;</span>,</span><br><span class="line">	`name` <span class="type">VARCHAR</span>(<span class="number">30</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;匿名&#x27;</span> COMMENT <span class="string">&#x27;姓名&#x27;</span>,</span><br><span class="line">	`pwd` <span class="type">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;123&#x27;</span> COMMENT <span class="string">&#x27;密码&#x27;</span>,</span><br><span class="line">	`gender` <span class="type">VARCHAR</span>(<span class="number">2</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;女&#x27;</span> COMMENT <span class="string">&#x27;性别&#x27;</span>,</span><br><span class="line">	`birthday` DATETIME <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;出生日期&#x27;</span>,</span><br><span class="line">	`address` <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;家庭地址&#x27;</span>,</span><br><span class="line">	`email` <span class="type">VARCHAR</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;邮箱&#x27;</span>,</span><br><span class="line">	<span class="keyword">PRIMARY</span> KEY (`id`)</span><br><span class="line">) ENGINE INNODB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 格式</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> [if <span class="keyword">not</span> <span class="keyword">exists</span>] `表名`(</span><br><span class="line">    `字段名` 列类型 [属性] [索引] [注释],</span><br><span class="line">    `字段名` 列类型 [属性] [索引] [注释],</span><br><span class="line">    ......</span><br><span class="line">    `字段名` 列类型 [属性] [索引] [注释],</span><br><span class="line">)[表类型] [字符集设置] [注释]</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<p><strong>快速学习方法</strong></p>
+<ul>
+<li>show create table <code>student</code> ;   查看创建表的命令<br>desc student;   显示表的结构</li>
+</ul>
+<blockquote>
+<p>数据库引擎</p>
+</blockquote>
+<ul>
+<li>InnoDB</li>
+<li>MyISAM</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">项目</th>
+<th align="center">MyISAM</th>
+<th align="center">InnoDB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">事务支持</td>
+<td align="center">不支持</td>
+<td align="center">支持</td>
+</tr>
+<tr>
+<td align="center">数据行锁定</td>
+<td align="center">不支持</td>
+<td align="center">支持</td>
+</tr>
+<tr>
+<td align="center">外键</td>
+<td align="center">不支持</td>
+<td align="center">支持</td>
+</tr>
+<tr>
+<td align="center">全文索引</td>
+<td align="center">支持</td>
+<td align="center">不支持</td>
+</tr>
+<tr>
+<td align="center">表空间大小</td>
+<td align="center">较小</td>
+<td align="center">较大,约为MyISAM两倍</td>
+</tr>
+</tbody></table>
+<p>常用使用操作</p>
+<ul>
+<li>MyISAM 节约空间，速度较快</li>
+<li>InnoDB 安全性高，有事务处理，多表多用户操作</li>
+</ul>
+<blockquote>
+<p>物理空间存在的位置</p>
+</blockquote>
+<p>所有数据库都存在data目录下，本质上是文件的存储</p>
+<ul>
+<li>InnoDB在数据库表中只有一个*.frm文件，以及上级目录下的ibdata1文件</li>
+<li>MyISAM对应文件<ul>
+<li>*.frm   表结构定义文件</li>
+<li> *.MYD 数据文件</li>
+<li> *.MYI 索引文件</li>
+</ul>
+</li>
+</ul>
+<p>MySQL默认支持编码Latin1，在my.ini中默认配置编码 character-set-server=utf8</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 修改表</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name rename <span class="keyword">as</span> table_new_name</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name <span class="keyword">add</span> age <span class="type">int</span>(<span class="number">11</span>) <span class="comment">-- 增加表字段</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name modify age <span class="type">varchar</span>(<span class="number">11</span>) <span class="comment">-- 一般用来修改约束</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name change age age2 <span class="type">int</span>(<span class="number">11</span>)   <span class="comment">-- 一般字段重命名</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name <span class="keyword">drop</span> age   <span class="comment">-- 删除表的字段</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="3、MySQL数据库管理"><a href="#3、MySQL数据库管理" class="headerlink" title="3、MySQL数据库管理"></a>3、MySQL数据库管理</h3><h4 id="3-1-外键（了解即可）"><a href="#3-1-外键（了解即可）" class="headerlink" title="3.1 外键（了解即可）"></a>3.1 外键（了解即可）</h4><p><img src="https://raw.githubusercontent.com/StarUnderNight/test/main/QQ%E6%88%AA%E5%9B%BE20210823184936.png" alt="数据库外键"></p>
+<h4 id="3-2-DML语言"><a href="#3-2-DML语言" class="headerlink" title="3.2 DML语言"></a>3.2 DML语言</h4><p>DML语言：</p>
+<ul>
+<li>insert</li>
+<li>update</li>
+<li>delete<h4 id="3-3-insert"><a href="#3-3-insert" class="headerlink" title="3.3 insert"></a>3.3 insert</h4>insert into 表名(字段1，字段2) value(值1，值2);<h4 id="3-4-update"><a href="#3-4-update" class="headerlink" title="3.4 update"></a>3.4 update</h4>UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值</li>
+</ul>
+<p>where子句<br>SELECT 列名称 FROM 表名称 WHERE 列 运算符 值</p>
+<ul>
+<li>delete 和truncate 删除内容，不会删除表结构</li>
+<li>truncate会重新设置自增列，计数器归零，不会影响事务<blockquote>
+<p>使用delete删除后，重启数据库,InnoDB会从0开始自增，因为它存在内存中<br>MyISAM不会从0开始，因为它存储在文件中</p>
+</blockquote>
+这些命令其实不用记录，网上查的到</li>
+</ul>
+<h4 id="select"><a href="#select" class="headerlink" title="select"></a>select</h4><p><img src="https://raw.githubusercontent.com/StarUnderNight/test/main/select.png" alt="select"></p>
+<h4 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h4><p><img src="https://raw.githubusercontent.com/StarUnderNight/test/main/distinct.png" alt="有趣操作"></p>
+<h4 id="where"><a href="#where" class="headerlink" title="where"></a>where</h4><p><img src="https://raw.githubusercontent.com/StarUnderNight/test/main/where%E5%AD%90%E5%8F%A5.png" alt="where"></p>
+<h4 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h4><p><img src="https://raw.githubusercontent.com/StarUnderNight/test/main/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2.png" alt="模糊查询"></p>
+<h4 id="7种join"><a href="#7种join" class="headerlink" title="7种join"></a>7种join</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/software_Manito/article/details/108326619">https://blog.csdn.net/software_Manito/article/details/108326619</a></p>
+<h3 id="6-事务"><a href="#6-事务" class="headerlink" title="6.事务"></a>6.事务</h3><blockquote>
+<p>ACID特性：原子性、隔离性、一致性、持久性</p>
+</blockquote>
+<ul>
+<li>一致性：针对一个事务操作前和操作后的状态一致</li>
+<li>持久性：事务结束后的数据不会随着外界原因而导致数据丢失</li>
+</ul>
+<ul>
+<li>脏读：一个事务读取了另一个事务未提交的数据</li>
+<li>不可重复读：在一个事务里读取表中某一行数据，多次读取结果不同</li>
+<li>幻读：在一个事务内读取到了别的事务插入的数据，导致前后读取不一致</li>
+</ul>
+<h3 id="7-索引"><a href="#7-索引" class="headerlink" title="7.索引"></a>7.索引</h3><blockquote>
+<p>MySQL官方对索引的定义为：索引是帮助MySQL搞笑获取数据的数据结构，提取句子主干，就可以得到索引本质：索引是数据结构</p>
+</blockquote>
+<h4 id="7-1索引分类"><a href="#7-1索引分类" class="headerlink" title="7.1索引分类"></a>7.1索引分类</h4><ul>
+<li>主键索引<ul>
+<li>唯一的标识，主键不可重复，只能有一个列作为主键</li>
+</ul>
+</li>
+<li>唯一索引<ul>
+<li>避免重复的列出现，唯一索引可以重复，多个列可以标识为 唯一索引</li>
+</ul>
+</li>
+<li>常规索引<ul>
+<li>默认的，index，key关键字来设置</li>
+</ul>
+</li>
+<li>全文索引<ul>
+<li>在特定的引擎中才有，MyISAM中没有</li>
+<li>快速定位数据</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-1-索引原则"><a href="#7-1-索引原则" class="headerlink" title="7.1 索引原则"></a>7.1 索引原则</h4><ul>
+<li>索引不是越多越好</li>
+<li>不要对经常变动数据加索引</li>
+<li>小数据量的表不需要加索引</li>
+<li>索引一般常用来</li>
+</ul>
+<h3 id="8-数据库备份"><a href="#8-数据库备份" class="headerlink" title="8. 数据库备份"></a>8. 数据库备份</h3><h3 id="9-权限管理"><a href="#9-权限管理" class="headerlink" title="9.权限管理"></a>9.权限管理</h3><p>用户表：mysql.user<br>本质：对用户权限的管理<br>create user name identified by ‘pwd’    创建用户<br>set password=password(‘pwd’)   修改当前密码<br>set password for user_name = password(‘pwd’)   修改指定用户的密码<br>rename user user_name to user_name2    重命名用于<br>grant all privileges on <em>.</em> to user_name</p>
+<h3 id="10-数据库规约、三范式"><a href="#10-数据库规约、三范式" class="headerlink" title="10 数据库规约、三范式"></a>10 数据库规约、三范式</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/23/MySQL01/" data-id="ckssb36p60004ygtrh5wj9ov9" data-title="MySQL01" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-springboot01" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/23/springboot01/" class="article-date">
+  <time class="dt-published" datetime="2021-08-23T04:51:41.000Z" itemprop="datePublished">2021-08-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/23/springboot01/">springboot01</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>自动配置<br>pom.xml</p>
+<ul>
+<li>spring-boot-dependences:核心依赖在父工程中</li>
+<li>我们在写或者引入一些SpringBoot依赖的时候，不需要指定版本，因为有这些版本仓库</li>
+</ul>
+<p>启动器</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 启动器 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>注解<br>@SpringBootConfiguration</p>
+<p>@EnableAutoConfiguration：自动配置<br>  @AutoConfigurationPackage：自动配置包<br>  @Import({AutoConfigurationImportSelector.class})：导入选择器器</p>
+<pre><code>  @Import(&#123;Registrar.class&#125;)   自动配置“注册包”
+</code></pre>
+<p>  @Import({AutoConfigurationImportSelector.class})</p>
+<p>   protected List<String> getCandidateConfigurations(AnnotationMetadata metadata, AnnotationAttributes attributes)  // 获取所有的配置字</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/23/springboot01/" data-id="ckssb36pg0007ygtratf97ba2" data-title="springboot01" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-PriorityQueue" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/22/PriorityQueue/" class="article-date">
+  <time class="dt-published" datetime="2021-08-22T04:28:52.000Z" itemprop="datePublished">2021-08-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/22/PriorityQueue/">PriorityQueue</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>1、PriorityQueue如何实现加入参数时，对参数中数据比较</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构造函数，参数中有比较器</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">PriorityQueue</span><span class="params">(<span class="keyword">int</span> initialCapacity, Comparator&lt;? <span class="keyword">super</span> E&gt; comparator)</span></span></span><br><span class="line"><span class="function"><span class="comment">// offer 加入元素                         </span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">offer</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (e == <span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">        modCount++;</span><br><span class="line">        <span class="keyword">int</span> i = size;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= queue.length)</span><br><span class="line">            grow(i + <span class="number">1</span>);</span><br><span class="line">        siftUp(i, e);</span><br><span class="line">        size = i + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// siftUp ，对元素进行比较操作</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">siftUp</span><span class="params">(<span class="keyword">int</span> k, E x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (comparator != <span class="keyword">null</span>)</span><br><span class="line">            siftUpUsingComparator(k, x, queue, comparator);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            siftUpComparable(k, x, queue);</span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line"><span class="comment">/*/* 如果自己实现了一个比较器，那就进入siftUpUsingComparator方法；核心代码如下：</span></span><br><span class="line"><span class="comment">   cmp就是自己实现的比较器，k是当前队列的长度,es是当前队列，加入元素后，优先队列中的元素并不一定是有序的，</span></span><br><span class="line"><span class="comment">   但通过对poll的处理，最后打印的元素必定是有序的</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">siftUpUsingComparator</span><span class="params">(<span class="keyword">int</span> k, T x, Object[] es, Comparator&lt;? <span class="keyword">super</span> T&gt; cmp)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (k &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">int</span> parent = (k - <span class="number">1</span>) &gt;&gt;&gt; <span class="number">1</span>;   <span class="comment">// 二分</span></span><br><span class="line">            Object e = es[parent];</span><br><span class="line">            <span class="keyword">if</span> (cmp.compare(x, (T) e) &gt;= <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            es[k] = e;</span><br><span class="line">            k = parent;</span><br><span class="line">        &#125;</span><br><span class="line">        es[k] = x;</span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line"><span class="comment">// poll</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">poll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> Object[] es;</span><br><span class="line">        <span class="keyword">final</span> E result;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> ((result = (E) ((es = queue)[<span class="number">0</span>])) != <span class="keyword">null</span>) &#123;   <span class="comment">// 判断第0个元素是否为null,result是第0个元素</span></span><br><span class="line">            modCount++;</span><br><span class="line">            <span class="keyword">final</span> <span class="keyword">int</span> n;</span><br><span class="line">            <span class="keyword">final</span> E x = (E) es[(n = --size)];   <span class="comment">// n是最后一个元素下标</span></span><br><span class="line">            es[n] = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">if</span> (n &gt; <span class="number">0</span>) &#123;    <span class="comment">// n 大于0时才需要进行操作，只有一个元素，则直接返回唯一元素</span></span><br><span class="line">                <span class="keyword">final</span> Comparator&lt;? <span class="keyword">super</span> E&gt; cmp;</span><br><span class="line">                <span class="keyword">if</span> ((cmp = comparator) == <span class="keyword">null</span>)</span><br><span class="line">                    siftDownComparable(<span class="number">0</span>, x, es, n);</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    siftDownUsingComparator(<span class="number">0</span>, x, es, n, cmp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;    </span><br><span class="line"></span><br><span class="line"><span class="comment">// siftDownUsingComparator，k是第0个元素，x是最后一个元素</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">siftDownUsingComparator</span><span class="params">(<span class="keyword">int</span> k, T x, Object[] es, <span class="keyword">int</span> n, Comparator&lt;? <span class="keyword">super</span> T&gt; cmp)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// assert n &gt; 0;</span></span><br><span class="line">        <span class="keyword">int</span> half = n &gt;&gt;&gt; <span class="number">1</span>;   <span class="comment">// n 取中间</span></span><br><span class="line">        <span class="keyword">while</span> (k &lt; half) &#123;</span><br><span class="line">            <span class="keyword">int</span> child = (k &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>;</span><br><span class="line">            Object c = es[child];</span><br><span class="line">            <span class="keyword">int</span> right = child + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (right &lt; n &amp;&amp; cmp.compare((T) c, (T) es[right]) &gt; <span class="number">0</span>)</span><br><span class="line">                c = es[child = right];</span><br><span class="line">            <span class="keyword">if</span> (cmp.compare(x, (T) c) &lt;= <span class="number">0</span>)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            es[k] = c;</span><br><span class="line">            k = child;</span><br><span class="line">        &#125;</span><br><span class="line">        es[k] = x;</span><br><span class="line">    &#125;    </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/22/PriorityQueue/" data-id="ckssb36p10000ygtrbu2nd14p" data-title="PriorityQueue" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hashcode" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/21/hashcode/" class="article-date">
+  <time class="dt-published" datetime="2021-08-20T17:26:33.000Z" itemprop="datePublished">2021-08-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/21/hashcode/">hashcode</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>1、System.java中的public static native int identityHashCode(Object x)方法<br>其C++源码如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> <span class="built_in">JVM_IHashCode</span>(env, x);</span><br><span class="line"><span class="comment">// 这是在jvm.cpp中的方法</span></span><br><span class="line"><span class="built_in">JVM_ENTRY</span>(jint, <span class="built_in">JVM_IHashCode</span>(JNIEnv* env, jobject handle))</span><br><span class="line">  <span class="built_in">JVMWrapper</span>(<span class="string">&quot;JVM_IHashCode&quot;</span>);</span><br><span class="line">  <span class="comment">// as implemented in the classic virtual machine; return 0 if object is NULL</span></span><br><span class="line">  <span class="keyword">return</span> handle == <span class="literal">NULL</span> ? <span class="number">0</span> : ObjectSynchronizer::<span class="built_in">FastHashCode</span> (THREAD, JNIHandles::<span class="built_in">resolve_non_null</span>(handle)) ;</span><br><span class="line"></span><br><span class="line"><span class="comment">// jniHandler.hpp文件中定义</span></span><br><span class="line">  <span class="function"><span class="keyword">inline</span> oop <span class="title">JNIHandles::resolve_non_null</span><span class="params">(jobject handle)</span> </span>&#123;</span><br><span class="line">  <span class="built_in">assert</span>(handle != <span class="literal">NULL</span>, <span class="string">&quot;JNI handle should not be null&quot;</span>);</span><br><span class="line">  oop result = *(oop*)handle;</span><br><span class="line">  <span class="built_in">assert</span>(result != <span class="literal">NULL</span>, <span class="string">&quot;Invalid value read from jni handle&quot;</span>);</span><br><span class="line">  <span class="built_in">assert</span>(result != badJNIHandle, <span class="string">&quot;Pointing to zapped jni handle area&quot;</span>);</span><br><span class="line">  <span class="comment">// Don&#x27;t let that private _deleted_handle object escape into the wild.</span></span><br><span class="line">  <span class="built_in">assert</span>(result != <span class="built_in">deleted_handle</span>(), <span class="string">&quot;Used a deleted global handle.&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// synchronizer.cpp定义</span></span><br><span class="line"><span class="function"><span class="keyword">intptr_t</span> <span class="title">ObjectSynchronizer::FastHashCode</span> <span class="params">(Thread * Self, oop obj)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (UseBiasedLocking) &#123;</span><br><span class="line">    <span class="keyword">if</span> (obj-&gt;<span class="built_in">mark</span>()-&gt;<span class="built_in">has_bias_pattern</span>()) &#123;</span><br><span class="line">      <span class="comment">// Box and unbox the raw reference just in case we cause a STW safepoint.</span></span><br><span class="line">      <span class="function">Handle <span class="title">hobj</span> <span class="params">(Self, obj)</span> </span>;</span><br><span class="line">      <span class="comment">// Relaxing assertion for bug 6320749.</span></span><br><span class="line">      <span class="built_in">assert</span> (Universe::<span class="built_in">verify_in_progress</span>() ||</span><br><span class="line">              !SafepointSynchronize::<span class="built_in">is_at_safepoint</span>(),</span><br><span class="line">             <span class="string">&quot;biases should not be seen by VM thread here&quot;</span>);</span><br><span class="line">      BiasedLocking::<span class="built_in">revoke_and_rebias</span>(hobj, <span class="literal">false</span>, JavaThread::<span class="built_in">current</span>());</span><br><span class="line">      obj = <span class="built_in">hobj</span>() ;</span><br><span class="line">      <span class="built_in">assert</span>(!obj-&gt;<span class="built_in">mark</span>()-&gt;<span class="built_in">has_bias_pattern</span>(), <span class="string">&quot;biases should be revoked by now&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/21/hashcode/" data-id="ckssb36p40001ygtr2uttdhp5" data-title="hashcode" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-test2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/08/19/test2/" class="article-date">
@@ -251,8 +715,8 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>1、如果栈帧的大小在编译时就已经确定，那么这些构建栈帧的信息是保存在哪里的？<br>2、常量池中14种常量项的结构不是很懂<br>3、在加载过程中，Class对象引用放在哪儿(P214)</p>
-
+        <p>1、如果栈帧的大小在编译时就已经确定，那么这些构建栈帧的信息是保存在哪里的？<br>2、常量池中14种常量项的结构不是很懂<br>3、在加载过程中，Class对象引用放在哪儿(P214)<br>4、Integer中为何要废除new Integer(i)方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 两者对别，官方推荐valueOf</span></span><br><span class="line"><span class="meta">@IntrinsicCandidate</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">        <span class="keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Integer(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Deprecated(since=&quot;9&quot;, forRemoval = true)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Integer</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.value = value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
     <footer class="article-footer">
@@ -260,206 +724,6 @@
       
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-小米提前批Java一面" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/08/16/%E5%B0%8F%E7%B1%B3%E6%8F%90%E5%89%8D%E6%89%B9Java%E4%B8%80%E9%9D%A2/" class="article-date">
-  <time class="dt-published" datetime="2021-08-16T02:46:11.000Z" itemprop="datePublished">2021-08-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/08/16/%E5%B0%8F%E7%B1%B3%E6%8F%90%E5%89%8D%E6%89%B9Java%E4%B8%80%E9%9D%A2/">小米提前批Java一面</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>1、JVM内存布局、一个对象怎么判断它是否该回收、了解垃圾回收器吗（CMS、G1）（反问：了解垃圾回收器在工作中是否重要、答：很重要，检测错误的时候，很需要这方面知识）<br>2、你知道哪些java的锁、CAS是怎么实现的、如何直接调用CAS的方法<br>3、volatile两个作用<br>4、锁和对象之间，在加锁和释放锁时，如何联系的(mark word)<br>5、为什么要使用线程池、线程池原理、线程池提供的模板有哪几个，参数有哪些、你自己设计线程池，能说说想法吗<br>6、MySQL有哪些引擎，为什么要用InnoDB（支持事务）、事务的四个特性、出了一道数据库题<br>7、Redis有哪些基本数据类型<br>8、你知道过滤器和拦截器的区别吗<br>10、java8的新特性<br>11、算法（层序遍历）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/16/%E5%B0%8F%E7%B1%B3%E6%8F%90%E5%89%8D%E6%89%B9Java%E4%B8%80%E9%9D%A2/" data-id="cksfzsivz0001botr2a7e5fo6" data-title="小米提前批Java一面" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-垃圾回收器" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/08/16/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/" class="article-date">
-  <time class="dt-published" datetime="2021-08-16T02:42:14.000Z" itemprop="datePublished">2021-08-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/08/16/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/">垃圾回收器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/16/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E5%99%A8/" data-id="cksfzsiw80005botr7okka0gm" data-title="垃圾回收器" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-美团提前批移动端三面" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/08/16/%E7%BE%8E%E5%9B%A2%E6%8F%90%E5%89%8D%E6%89%B9%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%B8%89%E9%9D%A2/" class="article-date">
-  <time class="dt-published" datetime="2021-08-16T02:31:19.000Z" itemprop="datePublished">2021-08-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/08/16/%E7%BE%8E%E5%9B%A2%E6%8F%90%E5%89%8D%E6%89%B9%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%B8%89%E9%9D%A2/">美团提前批移动端三面</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>1、华为杯项目中，哪些地方吸引了考官的注意<br>2、Mqtt和CoAp的区别<br>3、HTTP和HTTPs<br>4、设计模式<br>4、删除链表中重复的元素、合并有序链表</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/16/%E7%BE%8E%E5%9B%A2%E6%8F%90%E5%89%8D%E6%89%B9%E7%A7%BB%E5%8A%A8%E7%AB%AF%E4%B8%89%E9%9D%A2/" data-id="cksfzsiw90006botraldr4vd6" data-title="美团提前批移动端三面" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-普利姆-Prim算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/08/09/%E6%99%AE%E5%88%A9%E5%A7%86-Prim%E7%AE%97%E6%B3%95/" class="article-date">
-  <time class="dt-published" datetime="2021-08-09T05:58:14.000Z" itemprop="datePublished">2021-08-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/08/09/%E6%99%AE%E5%88%A9%E5%A7%86-Prim%E7%AE%97%E6%B3%95/">普利姆-Prim算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/09/%E6%99%AE%E5%88%A9%E5%A7%86-Prim%E7%AE%97%E6%B3%95/" data-id="cksfzsivv0000botrcx5r5yd3" data-title="普利姆-Prim算法" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-拓扑排序" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/08/09/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" class="article-date">
-  <time class="dt-published" datetime="2021-08-09T04:14:20.000Z" itemprop="datePublished">2021-08-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/08/09/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/">拓扑排序</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/09/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/" data-id="cks44hg640003botrclut0wzc" data-title="拓扑排序" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
-
     </footer>
   </div>
   
@@ -486,7 +750,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81/" rel="tag">源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81/" rel="tag">源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
     </div>
   </div>
 
@@ -496,7 +760,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 15px;">java源码</a> <a href="/tags/%E5%9B%BE/" style="font-size: 10px;">图</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%BA%90%E7%A0%81/" style="font-size: 15px;">源码</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">网络</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">面经</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 20px;">面试</a>
+      <a href="/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 20px;">java源码</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/%E5%9B%BE/" style="font-size: 10px;">图</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">学习</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%BA%90%E7%A0%81/" style="font-size: 15px;">源码</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">网络</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">面经</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 20px;">面试</a>
     </div>
   </div>
 
@@ -518,23 +782,23 @@
       <ul>
         
           <li>
-            <a href="/2021/08/19/test2/">test2</a>
+            <a href="/2021/08/24/DynamicProcess%E5%AD%A6%E4%B9%A0/">DynamicProgram学习</a>
           </li>
         
           <li>
-            <a href="/2021/08/17/test/">test</a>
+            <a href="/2021/08/23/MySQL01/">MySQL01</a>
           </li>
         
           <li>
-            <a href="/2021/08/17/%E9%9D%A2%E7%BB%8Fcollection/">面经collection</a>
+            <a href="/2021/08/23/springboot01/">springboot01</a>
           </li>
         
           <li>
-            <a href="/2021/08/17/%E8%85%BE%E8%AE%AF%E6%8F%90%E5%89%8D%E6%89%B9%E4%B8%80%E9%9D%A2/">腾讯提前批一面</a>
+            <a href="/2021/08/22/PriorityQueue/">PriorityQueue</a>
           </li>
         
           <li>
-            <a href="/2021/08/16/wantToKnow/">wantToKnow</a>
+            <a href="/2021/08/21/hashcode/">hashcode</a>
           </li>
         
       </ul>

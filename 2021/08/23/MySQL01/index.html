@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>MySQL01 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="JavaEE :企业级开发 web前端：页面展示后台：连接点，连接数据库JDBC，链接前端（控制，控制视图跳转，和给前端传递数据）数据库（存数据，Txt，Excel，word） 1.1 数据库分类关系型数据库：  MySQL、Oracle、SqlServer、DB2、SQLite 通过表和表之间，行和列之间的关系进行数据的存储非关系型数据库： Redis，MongDB 非关系型数据库，对象存储，通">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL01">
+<meta property="og:url" content="http://example.com/2021/08/23/MySQL01/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="JavaEE :企业级开发 web前端：页面展示后台：连接点，连接数据库JDBC，链接前端（控制，控制视图跳转，和给前端传递数据）数据库（存数据，Txt，Excel，word） 1.1 数据库分类关系型数据库：  MySQL、Oracle、SqlServer、DB2、SQLite 通过表和表之间，行和列之间的关系进行数据的存储非关系型数据库： Redis，MongDB 非关系型数据库，对象存储，通">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://raw.githubusercontent.com/StarUnderNight/test/main/QQ%E6%88%AA%E5%9B%BE20210823184936.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/StarUnderNight/test/main/QQ%E6%88%AA%E5%9B%BE20210823184936.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/StarUnderNight/test/main/select.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/StarUnderNight/test/main/distinct.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/StarUnderNight/test/main/where%E5%AD%90%E5%8F%A5.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/StarUnderNight/test/main/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2.png">
+<meta property="article:published_time" content="2021-08-23T06:56:49.000Z">
+<meta property="article:modified_time" content="2021-08-24T14:49:02.741Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/StarUnderNight/test/main/QQ%E6%88%AA%E5%9B%BE20210823184936.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-MySQL01" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/23/MySQL01/" class="article-date">
+  <time class="dt-published" datetime="2021-08-23T06:56:49.000Z" itemprop="datePublished">2021-08-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      MySQL01
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>JavaEE :企业级开发 web<br>前端：页面展示<br>后台：连接点，连接数据库JDBC，链接前端（控制，控制视图跳转，和给前端传递数据）<br>数据库（存数据，Txt，Excel，word）</p>
+<h3 id="1-1-数据库分类"><a href="#1-1-数据库分类" class="headerlink" title="1.1 数据库分类"></a>1.1 数据库分类</h3><p>关系型数据库：</p>
+<ul>
+<li>MySQL、Oracle、SqlServer、DB2、SQLite</li>
+<li>通过表和表之间，行和列之间的关系进行数据的存储<br>非关系型数据库：</li>
+<li>Redis，MongDB</li>
+<li>非关系型数据库，对象存储，通过对象的自身属性来决定</li>
+</ul>
+<p>DBMS(数据库管理系统)</p>
+<ul>
+<li>数据库管理软件，科学有效的管理数据库</li>
+<li>MySQL，数据库管理系统</li>
+</ul>
+<p>安装建议：尽量不安装exe，尽量安装zip</p>
+<h3 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql <span class="operator">-</span>uroot <span class="operator">-</span>p password  <span class="comment">--连接数据库</span></span><br><span class="line">flush privileges;   <span class="comment">-- 刷新权限</span></span><br><span class="line"><span class="keyword">show</span> tables;   <span class="comment">-- 查询数据库所有的表</span></span><br><span class="line"><span class="keyword">describe</span> student; <span class="comment">-- 显示数据库中所有表的信息</span></span><br><span class="line"><span class="keyword">create</span> database database_name; <span class="comment">--- 创建数据库</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>DDL:数据库定义语言</li>
+<li>DML：数据库操作语言</li>
+<li>DQL：数据库查询语言</li>
+<li>DCL：数据库控制语言</li>
+</ul>
+<h2 id="2-操作数据库"><a href="#2-操作数据库" class="headerlink" title="2. 操作数据库"></a>2. 操作数据库</h2><p>1.创建数据库: create database if not exists database_name<br>2.删除数据库：drop database if exists database_name<br>3.使用数据库: use database_name;</p>
+<hr>
+<p>如果表名或者属性名是一个特殊字符，用TAB键上的``包含这个特殊字符</p>
+<h3 id="2-2-数据库的列类型"><a href="#2-2-数据库的列类型" class="headerlink" title="2.2 数据库的列类型"></a>2.2 数据库的列类型</h3><blockquote>
+<p>数值</p>
+</blockquote>
+<ul>
+<li>tinyint  十分小的数据</li>
+<li>smallint  较小的数据  2个字节</li>
+<li>mediumint 中等大小数据 3个字节</li>
+<li><strong>int       标准整数    4个字节</strong> （这是可显示宽度） int(3)，比如001，021，333，232343</li>
+<li>bigint    较大的数据  8个字节</li>
+<li>float    浮点数       4个字节</li>
+<li>double   浮点数       8个字节</li>
+<li>decimal  字符串形势的浮点数  金融计算时，一般用decimal</li>
+</ul>
+<blockquote>
+<p>字符串</p>
+</blockquote>
+<ul>
+<li>char    0-255   1字节</li>
+<li><strong>varchar   可变字符串   0-65535  常用</strong></li>
+<li>tinytext  微型文本     2^8-1</li>
+<li><strong>text      文本串       2^16-1</strong></li>
+</ul>
+<blockquote>
+<p>时间日期</p>
+</blockquote>
+<ul>
+<li>date    YYYY-MM-DD, 日期格式</li>
+<li>time     HH:mm:ss 时间格式</li>
+<li>datetime YYYY-MM-DD HH:mm:ss 最常用的时间格式</li>
+<li>timestamp 时间戳  </li>
+<li>year</li>
+</ul>
+<blockquote>
+<p>null<br>一般不要用null进行运算</p>
+</blockquote>
+<h3 id="2-3-数据库的字段属性"><a href="#2-3-数据库的字段属性" class="headerlink" title="2.3 数据库的字段属性"></a>2.3 数据库的字段属性</h3><p><img src="https://raw.githubusercontent.com/StarUnderNight/test/main/QQ%E6%88%AA%E5%9B%BE20210823184936.png" alt="数据库的字段属性"><br>version  乐观锁<br>is_delete 伪删除<br>qmt_create 创建时间<br>gmt_update 修改时间</p>
+<h3 id="2-4-建表"><a href="#2-4-建表" class="headerlink" title="2.4 建表"></a>2.4 建表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> IF <span class="keyword">NOT</span> <span class="keyword">EXISTS</span> student (</span><br><span class="line">	`id` <span class="type">INT</span>(<span class="number">4</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT COMMENT <span class="string">&#x27;学号&#x27;</span>,</span><br><span class="line">	`name` <span class="type">VARCHAR</span>(<span class="number">30</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;匿名&#x27;</span> COMMENT <span class="string">&#x27;姓名&#x27;</span>,</span><br><span class="line">	`pwd` <span class="type">VARCHAR</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;123&#x27;</span> COMMENT <span class="string">&#x27;密码&#x27;</span>,</span><br><span class="line">	`gender` <span class="type">VARCHAR</span>(<span class="number">2</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;女&#x27;</span> COMMENT <span class="string">&#x27;性别&#x27;</span>,</span><br><span class="line">	`birthday` DATETIME <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;出生日期&#x27;</span>,</span><br><span class="line">	`address` <span class="type">VARCHAR</span>(<span class="number">100</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;家庭地址&#x27;</span>,</span><br><span class="line">	`email` <span class="type">VARCHAR</span>(<span class="number">50</span>) <span class="keyword">DEFAULT</span> <span class="keyword">NULL</span> COMMENT <span class="string">&#x27;邮箱&#x27;</span>,</span><br><span class="line">	<span class="keyword">PRIMARY</span> KEY (`id`)</span><br><span class="line">) ENGINE INNODB <span class="keyword">DEFAULT</span> CHARSET<span class="operator">=</span>utf8</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 格式</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> [if <span class="keyword">not</span> <span class="keyword">exists</span>] `表名`(</span><br><span class="line">    `字段名` 列类型 [属性] [索引] [注释],</span><br><span class="line">    `字段名` 列类型 [属性] [索引] [注释],</span><br><span class="line">    ......</span><br><span class="line">    `字段名` 列类型 [属性] [索引] [注释],</span><br><span class="line">)[表类型] [字符集设置] [注释]</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<p><strong>快速学习方法</strong></p>
+<ul>
+<li>show create table <code>student</code> ;   查看创建表的命令<br>desc student;   显示表的结构</li>
+</ul>
+<blockquote>
+<p>数据库引擎</p>
+</blockquote>
+<ul>
+<li>InnoDB</li>
+<li>MyISAM</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">项目</th>
+<th align="center">MyISAM</th>
+<th align="center">InnoDB</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">事务支持</td>
+<td align="center">不支持</td>
+<td align="center">支持</td>
+</tr>
+<tr>
+<td align="center">数据行锁定</td>
+<td align="center">不支持</td>
+<td align="center">支持</td>
+</tr>
+<tr>
+<td align="center">外键</td>
+<td align="center">不支持</td>
+<td align="center">支持</td>
+</tr>
+<tr>
+<td align="center">全文索引</td>
+<td align="center">支持</td>
+<td align="center">不支持</td>
+</tr>
+<tr>
+<td align="center">表空间大小</td>
+<td align="center">较小</td>
+<td align="center">较大,约为MyISAM两倍</td>
+</tr>
+</tbody></table>
+<p>常用使用操作</p>
+<ul>
+<li>MyISAM 节约空间，速度较快</li>
+<li>InnoDB 安全性高，有事务处理，多表多用户操作</li>
+</ul>
+<blockquote>
+<p>物理空间存在的位置</p>
+</blockquote>
+<p>所有数据库都存在data目录下，本质上是文件的存储</p>
+<ul>
+<li>InnoDB在数据库表中只有一个*.frm文件，以及上级目录下的ibdata1文件</li>
+<li>MyISAM对应文件<ul>
+<li>*.frm   表结构定义文件</li>
+<li> *.MYD 数据文件</li>
+<li> *.MYI 索引文件</li>
+</ul>
+</li>
+</ul>
+<p>MySQL默认支持编码Latin1，在my.ini中默认配置编码 character-set-server=utf8</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 修改表</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name rename <span class="keyword">as</span> table_new_name</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name <span class="keyword">add</span> age <span class="type">int</span>(<span class="number">11</span>) <span class="comment">-- 增加表字段</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name modify age <span class="type">varchar</span>(<span class="number">11</span>) <span class="comment">-- 一般用来修改约束</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name change age age2 <span class="type">int</span>(<span class="number">11</span>)   <span class="comment">-- 一般字段重命名</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> table_name <span class="keyword">drop</span> age   <span class="comment">-- 删除表的字段</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="3、MySQL数据库管理"><a href="#3、MySQL数据库管理" class="headerlink" title="3、MySQL数据库管理"></a>3、MySQL数据库管理</h3><h4 id="3-1-外键（了解即可）"><a href="#3-1-外键（了解即可）" class="headerlink" title="3.1 外键（了解即可）"></a>3.1 外键（了解即可）</h4><p><img src="https://raw.githubusercontent.com/StarUnderNight/test/main/QQ%E6%88%AA%E5%9B%BE20210823184936.png" alt="数据库外键"></p>
+<h4 id="3-2-DML语言"><a href="#3-2-DML语言" class="headerlink" title="3.2 DML语言"></a>3.2 DML语言</h4><p>DML语言：</p>
+<ul>
+<li>insert</li>
+<li>update</li>
+<li>delete<h4 id="3-3-insert"><a href="#3-3-insert" class="headerlink" title="3.3 insert"></a>3.3 insert</h4>insert into 表名(字段1，字段2) value(值1，值2);<h4 id="3-4-update"><a href="#3-4-update" class="headerlink" title="3.4 update"></a>3.4 update</h4>UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值</li>
+</ul>
+<p>where子句<br>SELECT 列名称 FROM 表名称 WHERE 列 运算符 值</p>
+<ul>
+<li>delete 和truncate 删除内容，不会删除表结构</li>
+<li>truncate会重新设置自增列，计数器归零，不会影响事务<blockquote>
+<p>使用delete删除后，重启数据库,InnoDB会从0开始自增，因为它存在内存中<br>MyISAM不会从0开始，因为它存储在文件中</p>
+</blockquote>
+这些命令其实不用记录，网上查的到</li>
+</ul>
+<h4 id="select"><a href="#select" class="headerlink" title="select"></a>select</h4><p><img src="https://raw.githubusercontent.com/StarUnderNight/test/main/select.png" alt="select"></p>
+<h4 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h4><p><img src="https://raw.githubusercontent.com/StarUnderNight/test/main/distinct.png" alt="有趣操作"></p>
+<h4 id="where"><a href="#where" class="headerlink" title="where"></a>where</h4><p><img src="https://raw.githubusercontent.com/StarUnderNight/test/main/where%E5%AD%90%E5%8F%A5.png" alt="where"></p>
+<h4 id="模糊查询"><a href="#模糊查询" class="headerlink" title="模糊查询"></a>模糊查询</h4><p><img src="https://raw.githubusercontent.com/StarUnderNight/test/main/%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2.png" alt="模糊查询"></p>
+<h4 id="7种join"><a href="#7种join" class="headerlink" title="7种join"></a>7种join</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/software_Manito/article/details/108326619">https://blog.csdn.net/software_Manito/article/details/108326619</a></p>
+<h3 id="6-事务"><a href="#6-事务" class="headerlink" title="6.事务"></a>6.事务</h3><blockquote>
+<p>ACID特性：原子性、隔离性、一致性、持久性</p>
+</blockquote>
+<ul>
+<li>一致性：针对一个事务操作前和操作后的状态一致</li>
+<li>持久性：事务结束后的数据不会随着外界原因而导致数据丢失</li>
+</ul>
+<ul>
+<li>脏读：一个事务读取了另一个事务未提交的数据</li>
+<li>不可重复读：在一个事务里读取表中某一行数据，多次读取结果不同</li>
+<li>幻读：在一个事务内读取到了别的事务插入的数据，导致前后读取不一致</li>
+</ul>
+<h3 id="7-索引"><a href="#7-索引" class="headerlink" title="7.索引"></a>7.索引</h3><blockquote>
+<p>MySQL官方对索引的定义为：索引是帮助MySQL搞笑获取数据的数据结构，提取句子主干，就可以得到索引本质：索引是数据结构</p>
+</blockquote>
+<h4 id="7-1索引分类"><a href="#7-1索引分类" class="headerlink" title="7.1索引分类"></a>7.1索引分类</h4><ul>
+<li>主键索引<ul>
+<li>唯一的标识，主键不可重复，只能有一个列作为主键</li>
+</ul>
+</li>
+<li>唯一索引<ul>
+<li>避免重复的列出现，唯一索引可以重复，多个列可以标识为 唯一索引</li>
+</ul>
+</li>
+<li>常规索引<ul>
+<li>默认的，index，key关键字来设置</li>
+</ul>
+</li>
+<li>全文索引<ul>
+<li>在特定的引擎中才有，MyISAM中没有</li>
+<li>快速定位数据</li>
+</ul>
+</li>
+</ul>
+<h4 id="7-1-索引原则"><a href="#7-1-索引原则" class="headerlink" title="7.1 索引原则"></a>7.1 索引原则</h4><ul>
+<li>索引不是越多越好</li>
+<li>不要对经常变动数据加索引</li>
+<li>小数据量的表不需要加索引</li>
+<li>索引一般常用来</li>
+</ul>
+<h3 id="8-数据库备份"><a href="#8-数据库备份" class="headerlink" title="8. 数据库备份"></a>8. 数据库备份</h3><h3 id="9-权限管理"><a href="#9-权限管理" class="headerlink" title="9.权限管理"></a>9.权限管理</h3><p>用户表：mysql.user<br>本质：对用户权限的管理<br>create user name identified by ‘pwd’    创建用户<br>set password=password(‘pwd’)   修改当前密码<br>set password for user_name = password(‘pwd’)   修改指定用户的密码<br>rename user user_name to user_name2    重命名用于<br>grant all privileges on <em>.</em> to user_name</p>
+<h3 id="10-数据库规约、三范式"><a href="#10-数据库规约、三范式" class="headerlink" title="10 数据库规约、三范式"></a>10 数据库规约、三范式</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/23/MySQL01/" data-id="ckssb36p60004ygtrh5wj9ov9" data-title="MySQL01" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/08/24/DynamicProcess%E5%AD%A6%E4%B9%A0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          DynamicProgram学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/08/23/springboot01/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">springboot01</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%BA%90%E7%A0%81/" rel="tag">java源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE/" rel="tag">图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0/" rel="tag">学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%BA%90%E7%A0%81/" rel="tag">源码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E7%BB%8F/" rel="tag">面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/java%E6%BA%90%E7%A0%81/" style="font-size: 20px;">java源码</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/springboot/" style="font-size: 10px;">springboot</a> <a href="/tags/%E5%9B%BE/" style="font-size: 10px;">图</a> <a href="/tags/%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">学习</a> <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 10px;">排序</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 10px;">操作系统</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 15px;">数据结构</a> <a href="/tags/%E6%BA%90%E7%A0%81/" style="font-size: 15px;">源码</a> <a href="/tags/%E7%BD%91%E7%BB%9C/" style="font-size: 10px;">网络</a> <a href="/tags/%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">面经</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 20px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/08/24/DynamicProcess%E5%AD%A6%E4%B9%A0/">DynamicProgram学习</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/23/MySQL01/">MySQL01</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/23/springboot01/">springboot01</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/22/PriorityQueue/">PriorityQueue</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/21/hashcode/">hashcode</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

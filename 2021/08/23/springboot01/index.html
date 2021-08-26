@@ -4,18 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>wantToKnow | Hexo</title>
+  <title>springboot01 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="1、如果栈帧的大小在编译时就已经确定，那么这些构建栈帧的信息是保存在哪里的？2、常量池中14种常量项的结构不是很懂3、在加载过程中，Class对象引用放在哪儿(P214)4、Integer中为何要废除new Integer(i)方法 12345678910111213&#x2F;&#x2F; 两者对别，官方推荐valueOf@IntrinsicCandidatepublic static Integer valueO">
+  <meta name="description" content="自动配置pom.xml  spring-boot-dependences:核心依赖在父工程中 我们在写或者引入一些SpringBoot依赖的时候，不需要指定版本，因为有这些版本仓库  启动器 12345&lt;!-- 启动器 --&gt;        &lt;dependency&gt;            &lt;groupId&gt;org.springframework.boot&lt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="wantToKnow">
-<meta property="og:url" content="http://example.com/2021/08/16/wantToKnow/index.html">
+<meta property="og:title" content="springboot01">
+<meta property="og:url" content="http://example.com/2021/08/23/springboot01/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1、如果栈帧的大小在编译时就已经确定，那么这些构建栈帧的信息是保存在哪里的？2、常量池中14种常量项的结构不是很懂3、在加载过程中，Class对象引用放在哪儿(P214)4、Integer中为何要废除new Integer(i)方法 12345678910111213&#x2F;&#x2F; 两者对别，官方推荐valueOf@IntrinsicCandidatepublic static Integer valueO">
+<meta property="og:description" content="自动配置pom.xml  spring-boot-dependences:核心依赖在父工程中 我们在写或者引入一些SpringBoot依赖的时候，不需要指定版本，因为有这些版本仓库  启动器 12345&lt;!-- 启动器 --&gt;        &lt;dependency&gt;            &lt;groupId&gt;org.springframework.boot&lt;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-08-16T04:41:09.000Z">
-<meta property="article:modified_time" content="2021-08-20T18:43:50.750Z">
+<meta property="article:published_time" content="2021-08-23T04:51:41.000Z">
+<meta property="article:modified_time" content="2021-08-23T06:56:30.560Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="springboot">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -73,10 +74,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-wantToKnow" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-springboot01" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/08/16/wantToKnow/" class="article-date">
-  <time class="dt-published" datetime="2021-08-16T04:41:09.000Z" itemprop="datePublished">2021-08-16</time>
+    <a href="/2021/08/23/springboot01/" class="article-date">
+  <time class="dt-published" datetime="2021-08-23T04:51:41.000Z" itemprop="datePublished">2021-08-23</time>
 </a>
     
   </div>
@@ -87,7 +88,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      wantToKnow
+      springboot01
     </h1>
   
 
@@ -95,34 +96,54 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>1、如果栈帧的大小在编译时就已经确定，那么这些构建栈帧的信息是保存在哪里的？<br>2、常量池中14种常量项的结构不是很懂<br>3、在加载过程中，Class对象引用放在哪儿(P214)<br>4、Integer中为何要废除new Integer(i)方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 两者对别，官方推荐valueOf</span></span><br><span class="line"><span class="meta">@IntrinsicCandidate</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Integer <span class="title">valueOf</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">        <span class="keyword">return</span> IntegerCache.cache[i + (-IntegerCache.low)];</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Integer(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Deprecated(since=&quot;9&quot;, forRemoval = true)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Integer</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.value = value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <p>自动配置<br>pom.xml</p>
+<ul>
+<li>spring-boot-dependences:核心依赖在父工程中</li>
+<li>我们在写或者引入一些SpringBoot依赖的时候，不需要指定版本，因为有这些版本仓库</li>
+</ul>
+<p>启动器</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 启动器 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>注解<br>@SpringBootConfiguration</p>
+<p>@EnableAutoConfiguration：自动配置<br>  @AutoConfigurationPackage：自动配置包<br>  @Import({AutoConfigurationImportSelector.class})：导入选择器器</p>
+<pre><code>  @Import(&#123;Registrar.class&#125;)   自动配置“注册包”
+</code></pre>
+<p>  @Import({AutoConfigurationImportSelector.class})</p>
+<p>   protected List<String> getCandidateConfigurations(AnnotationMetadata metadata, AnnotationAttributes attributes)  // 获取所有的配置字</p>
+</li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/16/wantToKnow/" data-id="cksfzsiw70003botr75adh9f9" data-title="wantToKnow" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/08/23/springboot01/" data-id="ckssb36pg0007ygtratf97ba2" data-title="springboot01" class="article-share-link">Share</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springboot/" rel="tag">springboot</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2021/08/17/%E8%85%BE%E8%AE%AF%E6%8F%90%E5%89%8D%E6%89%B9%E4%B8%80%E9%9D%A2/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/08/23/MySQL01/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          腾讯提前批一面
+          MySQL01
         
       </div>
     </a>
   
   
-    <a href="/2021/08/16/%E5%B0%8F%E7%B1%B3%E6%8F%90%E5%89%8D%E6%89%B9Java%E4%B8%80%E9%9D%A2/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/08/22/PriorityQueue/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">小米提前批Java一面</div>
+      <div class="article-nav-title">PriorityQueue</div>
     </a>
   
 </nav>
