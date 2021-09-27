@@ -71,6 +71,16 @@
 			font-size: 500%;
 		}
 
+		#ctn{
+			position: absolute;
+			top: 35%;
+			left: 10%;
+			width: 80%;
+			height: 8%;
+			box-shadow: 1px 1px 5px 0px;
+			text-align: center;
+			font-size: 500%;
+		}
 
 
 
@@ -87,15 +97,18 @@
 		<div id="low" class="ndis"></div>
 		<div id="low" class="ndis"></div>
 		-->
+		<div id = "ctn" >猜测次数: 0</div>
 		<div id = "res"></div>
 		<input id="guessVal" placeholder="输入你猜想的数!" />
 		<div id="guessBtn" onclick="guessFun()">guess</div>
+
 
 	</div>
 
 	<script type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
 
 	<script type="text/javascript">
+		var count = 0;
 		var target = 0;
 		var low = parseInt($("#lowIn").val());
 		var high = parseInt($("#highIn").val());
@@ -121,12 +134,12 @@
 
 				target = low +  parseInt((Math.random() * (high - low)));
 			}
-			
+			count = 0;
 		}
 
 		function guessFun() {
 			var val = parseInt($("#guessVal").val());
-			console.log("val = " + val + "; target = " + target);
+			//console.log("val = " + val + "; target = " + target);
 			if (val == target) {
 				// 猜中
 				$("#res").html("恭喜！猜中了!！!")
@@ -135,7 +148,10 @@
 			} else {
 				$("#res").html("太小了！");
 			}
-			$("#guessVal").val("");
+			//$("#guessVal").val("");
+			count++;
+			//console.log(count);
+			$("#ctn").html("猜测次数: " + count);
 
 		}
 	</script>
