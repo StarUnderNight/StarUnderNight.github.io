@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        node {
+          cursor: pointer;
+        }
+
+        .node circle {
+          fill: #fff;
+          stroke: steelblue;   /*圆圈的颜色 [可修改] */
+          stroke-width: 1px;   /*修改圆圈的宽度 [可修改]*/
+        }
+
+        .node text {
+          font: 10px sans-serif;
+        }
+
+        .link {
+          fill: none;
+          stroke: #ccc;   /*修改线条颜色  [可修改]*/
+          stroke-width: 1px;   /*修改连线宽度  [可修改]*/
+        }
+        #input_file{
+            position: absolute;
+            width: 150px;
+            height: 28px;
+            top: 10px;
+            left: 30px;
+            line-height: 28px;
+            text-align: center;
+            cursor: pointer;
+        }
+        #pre{
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            top: 50px;
+            left: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: #00BFFF;
+            box-shadow: 0px 3px 3px 1px;
+            cursor: pointer;
+        }
+        #switch{
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            top: 100px;
+            left: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: #00BFFF;
+            box-shadow: 0px 3px 3px 1px;
+            cursor: pointer;
+        }
+        #next{
+            position: absolute;
+            width: 60px;
+            height: 30px;
+            top: 150px;
+            left: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: #00BFFF;
+            box-shadow: 0px 3px 3px 1px;
+            cursor: pointer;
+        }
+
+        #page{
+            position: absolute;
+            width: 270px;
+            height: 60px;
+            top: 300px;
+            right: 50px;
+            margin-left: -100px;
+            line-height: 60px;
+            text-align: center;
+            background-color: #FFFFF0;
+            box-shadow: 0px 3px 5px 1px;
+            cursor: pointer;
+            font-size: 45px;
+            opacity: 0.6;
+        }
+
+        #rate{
+            position: absolute;
+            width: 60px;
+            height: 28px;
+            top: 200px;
+            left: 30px;
+            line-height: 28px;
+            text-align: center;
+            cursor: pointer;
+        }
+        #comfirm{
+            position: absolute;
+            width: 100px;
+            height: 30px;
+            top: 250px;
+            left: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: #FFFACD;
+            box-shadow: 0px 1px 2px 1px;
+            cursor: pointer;
+
+        }
+
+        #idx{
+            position: absolute;
+            width: 60px;
+            height: 28px;
+            top: 300px;
+            left: 30px;
+            line-height: 28px;
+            text-align: center;
+            cursor: pointer;
+        }
+        #comfirm_period{
+            position: absolute;
+            width: 100px;
+            height: 30px;
+            top: 350px;
+            left: 30px;
+            line-height: 30px;
+            text-align: center;
+            background-color: #FFFACD;
+            box-shadow: 0px 1px 2px 1px;
+            cursor: pointer;
+
+        }
+        #show_place{
+            position: absolute;
+            width: 300px;
+            height: 600px;
+            top: 400px;
+            right: 2%;
+            
+            text-align: center;
+            background-color: #FFFACD;
+            box-shadow: 0px 1px 2px 1px;
+            cursor: pointer;
+            opacity: 0.6;
+
+        }
+
+
+        #topo_link{
+            position: absolute;
+            background: #fafafa;
+            top: 460px;
+            left: 10px;
+            box-shadow: 0px 1px 2px 1px;
+            background-color: #FFFACD;
+        }
+
+        .node{
+            background-color: red;
+            cursor: pointer;
+            text-align: center;
+            font-size: 10px;
+            line-height: 20px;
+        }
+        .link{
+            background-color: black;
+            position: absolute;
+            opacity: 1;
+        }
+
+
+ 
+	</style>
+</head>
+<body id="body">
+    
+    <input id = "input_file" type='file' accept='text/plain'  onchange='openFile(event)'>
+    <input id = "rate" type="text" name="" value="1000">
+    <input id = "idx" type="text" name="" >
+    <div id = "pre"  onclick="fun_pre()">上一个</div>
+    <div id = "switch" onclick="fun_switch()">启动</div>
+    <div id = "next"  onclick="fun_next()">下一个</div>
+    <div id = "page">周期 1</div>
+    <div id = "comfirm" onclick="fun_update_rate()">更新速率</div>
+    <div id = "comfirm_period" onclick="fun_jump_period()">跳转周期</div>
+    <div id = "show_place"></div>
+
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="d3.v3.min.js"></script>
+	<script type="text/javascript">
+
+        // 参数配置
+        var margin = {top: 20,right: 100,bottom: 20,left: 120};
+        width = 960 - margin.right - margin.left;
+        height = 800 - margin.top - margin.bottom;
+
+        var duration = 750;
+
+        var hop_colors = ["#FA8072", "#FFC125", "#8EE5EE", "#00EE00", "#FFE7BA", "#FF00FF", "#CDC9C9", "#FF4040", "#FFB6C1", "#FFFACD", "#00EEEE", "#FFF0F5"];
+        var cirR = 0;   // 球相对于连线的位置
+        var colors = []; 
+        var c_font_size = "10px";
+        var nodeR = 10; // 球的半径  [可修改]
+        var hopInterval = 50;   // 两跳之间的间隔  [可修改]
+        //同级节点直接的距离
+        var tree = d3.layout.tree().nodeSize([24, 0]);   // [可修改]
+        var diagonal = d3.svg.diagonal().projection(function (d) {
+            return [d.x + cirR / 2, d.y + cirR / 2];
+        });
+
+        var svg = d3.select("#body").append("svg")
+            .attr("width", 2000).attr("height", 1000)
+            .attr("font-family", "Times New Roman")
+            .call(zm = d3.behavior.zoom().scaleExtent([1,3]).on("zoom", redraw)).append("g")
+            .attr("transform", "translate(" + 800 + "," + 50 + ")");
+
+        //necessary so that zoom knows where to zoom and unzoom from
+        zm.translate([350, 20]);
+        d3.select("#body").style("height", "800px");
+
+        var root_list = new Array(0);   
+        var node_list_map = new Array(0);
+        var pos_arr = new Array(0);   // 节点坐标
+        var pos_arr_range = new Array(0);   // 用于保存节点是否显示传输范围
+        var relation_list_map = new Array(0);   // 链路关系图
+        var hops = new Array(0);
+
+        var timer; 
+        var cur_idx = 0;
+        var last_idx = 0;
+        var update_rate = 1000;
+
+        var real_w = 300;
+        var radio_w = 500 / real_w;
+        var trans_range = 50;   // 传输范围
+
+
+
+        function drawTopo() {
+            // 更新跳数信息
+
+            var tmp_map = relation_list_map[cur_idx];
+
+            var hop = 0;
+            var node_queue = [0];
+            while (node_queue.length > 0) {
+                q_len = node_queue.length;
+                for (var i = 0; i < q_len; i++) {
+                    var node_id = node_queue.shift();
+                    hops[node_id] = hop;
+                    var c_nodes = tmp_map[node_id];
+                    if (c_nodes == undefined) {
+                        continue;
+                    }
+                    for (var j = 0; j < c_nodes.length; j++){
+                        node_queue.push(c_nodes[j]);
+                    }
+                }
+                hop += 1;
+            }
+
+
+
+            // 判断是否存在canvas对象
+            var topo_link = document.getElementById("topo_link");
+            if (topo_link != null) {
+                document.body.removeChild(topo_link);
+            }
+
+            // 创建canvas对象
+            topo_link = document.createElement("canvas");
+            document.body.appendChild(topo_link);
+            topo_link.id = "topo_link";
+
+            // 清除画布
+            topo_link.width = 540;
+            topo_link.height = 540;
+
+
+            var ctx = topo_link.getContext("2d");
+
+            // 链路
+            
+            for (let key in tmp_map) {
+                var c_nodes = tmp_map[key];
+                var f_x = pos_arr[key][0];
+                var f_y = pos_arr[key][1];
+                for (let i in c_nodes) {
+                    var c_x = pos_arr[c_nodes[i]][0];
+                    var c_y = pos_arr[c_nodes[i]][1];
+                    ctx.beginPath();
+                    ctx.lineWidth = 2;
+                    ctx.moveTo(f_x, f_y);
+                    ctx.lineTo(c_x, c_y);
+                    ctx.strokeStyle = "gray";
+                    ctx.stroke();
+                    ctx.closePath();
+                }
+            }
+
+            // 节点
+            var node_path = Array(0);
+            var test_path;
+            for(let i in pos_arr){
+                var x = pos_arr[i][0];
+                var y = pos_arr[i][1];
+                ctx.beginPath();
+                ctx.fillStyle = hop_colors[hops[i]];
+                node_path.push(new Path2D());
+                node_path[i].arc(x, y, 10, 0*Math.PI/180, 360*Math.PI/180);
+                ctx.fill(node_path[i]);
+
+
+
+                ctx.fillStyle = "black";
+                ctx.fillText("" + i, x - 5, y + 5);
+                ctx.closePath();
+                // 画传输范围
+                if (pos_arr_range[i] == 1) {
+                    ctx.beginPath();
+                    ctx.lineWidth = 0.8;
+                    ctx.strokeStyle="red";
+                    ctx.arc(x, y, trans_range * radio_w, 0*Math.PI/180, 360*Math.PI/180);
+                    ctx.stroke();
+                }
+            }
+            // 添加事件 
+            topo_link.addEventListener("click", function(e) {
+                for (let i in node_path) {
+                    var x_off = e.clientX - topo_link.getBoundingClientRect().left;
+                    var y_off = e.clientY - topo_link.getBoundingClientRect().top;
+
+                    if (ctx.isPointInPath(node_path[i], x_off, y_off)) {
+                        if (pos_arr_range[i] == 0) {
+                            pos_arr_range[i] = 1;
+                        }  else {
+                            pos_arr_range[i] = 0;
+                        }
+                    }
+                }
+                document.body.removeChild(topo_link);
+                drawTopo();
+ 
+            });
+
+        }
+
+
+        
+    
+        function fun_pre(){
+            root_list_size = root_list.length;
+            last_idx = cur_idx;
+            cur_idx = (cur_idx + root_list_size - 1) % root_list_size;
+            clearInterval(timer)
+            $("#switch").html("启动");
+            $("#show_place").html("");
+            update(root_list[cur_idx]);
+            drawTopo();
+            $("#page").html("周期 " + cur_idx);
+        }
+        function fun_next(){
+            root_list_size = root_list.length;
+            last_idx = cur_idx;
+            cur_idx = (cur_idx + 1) % root_list_size;
+            clearInterval(timer);
+            $("#switch").html("启动");
+            $("#show_place").html("");
+            update(root_list[cur_idx]);
+            drawTopo();
+            $("#page").html("周期 " + cur_idx);
+        }
+
+        function fun_switch(){
+            if ($("#switch").html() == "启动"){
+                $("#switch").html("暂停");
+                timer = setInterval(fun_run, update_rate);
+            } else if ($("#switch").html() == "暂停"){
+                clearInterval(timer)
+                $("#switch").html("启动");
+            } else {
+                alert("error");
+            }
+
+        }
+
+        function fun_update_rate(){
+            update_rate = parseInt($("#rate").val())
+        }
+
+        function fun_jump_period(){
+            last_idx = cur_idx;
+            cur_idx = parseInt($("#idx").val())
+            clearInterval(timer)
+            root_list_size = root_list.length;
+            $("#show_place").html("");
+            update(root_list[cur_idx])
+            drawTopo();
+            $("#page").html("周期 " + cur_idx);
+            $("#switch").html("启动");
+            // $("#idx").attr("placeholder", "max " + (root_list.length -1))
+        }
+
+
+        function fun_run(){
+            root_list_size = root_list.length;
+            last_idx = cur_idx;
+            cur_idx = (cur_idx + 1) % root_list_size;
+            $("#show_place").html("");
+            update(root_list[cur_idx])
+            drawTopo();
+            $("#page").html("周期 " + cur_idx);
+        }
+
+        var openFile = function(event) {
+                var input = event.target;
+                var reader = new FileReader();
+
+                reader.onload = function() {
+                    if(reader.result) {
+
+
+                        var t_range = reader.result.split("start_transmission_range[")[1].split("]nd_transmission_range")[0];
+                        trans_range = parseInt(t_range);
+
+                        var lines = reader.result.split("topology_start[");
+                        lines.shift();
+                        raw_data = new Array(0);
+                        for (let i in lines){
+                            line = lines[i].split("]topology_end")[0].replace(/\s*/g, "");
+                            raw_data.push(line)
+                        }
+                        // 对所有拓扑进行更新
+                        for (let i in raw_data){
+
+                            topos = raw_data[i].split(";");
+                            topos.pop();
+                            tmp_map = {};
+                            node_map = {};
+                            for (let j in topos){
+                                links = topos[j].split(":");
+                                childs = links[1].split("{")[1].split("}")[0].split(",");
+                                tmp_map[links[0]] = childs;
+                                for (let z in childs){
+                                    c_id = childs[z];
+                                    node_map[c_id] = links[0];
+                                }
+                            }
+                            relation_list_map.push(tmp_map);
+                            s = find_node("0", tmp_map);
+                            var root = eval('(' + s + ')');  
+                            root.x0 = 0;
+                            root.y0 = height / 2;  
+                            root_list.push(root);
+
+                            node_list_map.push(node_map);
+
+                        }
+                        $("#idx").attr("placeholder", "max " + (root_list.length -1));
+
+
+                        update(root_list[0]);
+
+                        // 处理坐标信息
+                        lines = reader.result.split("node_position");
+                        lines.shift();   // 删除第0个
+                        for (let i in lines){
+                            line = lines[i].split("nei")[0].split(")")[0].split("(")[1].split(", ");
+                            x = parseInt(line[0]) * radio_w + 260;
+                            y = parseInt(line[1]) * radio_w + 260;
+                            pos_arr.push([x, y]);
+                            pos_arr_range.push(0);
+                        }
+
+                        hops = new Array(pos_arr.length);
+
+                        drawTopo();
+                    }
+                };
+
+                reader.readAsText(input.files[0]);
+        };
+
+
+
+
+
+        function redraw() {
+          //console.log("here", d3.event.translate, d3.event.scale);
+          svg.attr("transform", "translate(" + d3.event.translate + ")"+ " scale(" + d3.event.scale + ")");
+        }
+
+
+        function find_node(node, all_map) {
+        	var s1 = "{\"id\":\"" + node +"\"";
+        	if (all_map.hasOwnProperty(node)) {
+        		s1 += ",\"children\":["
+        		var children = all_map[node];
+
+        		for (var i = 0; i < children.length;i++) {
+        			s1 += find_node(children[i], all_map);
+        			if (i < children.length - 1) {
+        				s1 += ","
+        			}
+        		}
+        		s1 += "]"
+        	}
+        	s1 += "}";
+        	return s1;
+        }
+
+
+        function update(source) {
+
+            // Compute the new tree layout.
+            var nodes = tree.nodes(source).reverse(),
+                links = tree.links(nodes);
+
+            // Normalize for fixed-depth.
+            nodes.forEach(function (d) {
+                d.y = d.depth * hopInterval;
+            });
+
+            // Update the nodes…
+            var node = svg.selectAll("g.node").data(nodes, function (d) {
+                return d.id || (d.id = ++i);
+            });
+
+            // Enter any new nodes at the parent's previous position.
+            var nodeEnter = node.enter().append("g")
+                .attr("class", "node")
+                .attr("transform", function (d) {
+                return "translate(" + source.x0 + "," + source.y0 + ")";
+            }).on("click", click);
+
+            // nodeEnter[0][0]
+
+            nodeEnter.append("circle")
+                .attr("r",nodeR)
+                .attr("stroke", "#fff")
+                .attr("stroke-width", 1)
+                .style("fill", function (d) {
+                return d._children ? "red" : "black";
+            });
+
+
+            nodeEnter.append("text")
+                .attr("x", cirR / 2)
+                .attr("y", 0)
+                .attr("dy", ".35em")
+                .attr("text-anchor", "middle")
+        		.style("font-size",c_font_size)   // 圆圈内字体大小 [可修改]
+                .style("color", "red")
+                .text(function (d) {
+                return d.id;
+            });
+
+            // 改变节点到新的位置
+            var nodeUpdate = node.transition()
+                .duration(duration)
+                .attr("transform", function (d) {
+                return "translate(" + d.x + "," + d.y + ")";
+            });
+
+            nodeUpdate.select("circle")
+                .attr("r",nodeR)
+                .attr("stroke", "black")
+                .attr("stroke-width", 1)
+                .style("fill", function (d) {
+                    // 顺序
+                    if (cur_idx == 0){
+                        return "#fff";
+                    }
+                    if (last_idx + 1 == cur_idx) {
+                        cur_father = node_list_map[cur_idx][d.id];
+                        last_father = node_list_map[last_idx][d.id];
+                        if (cur_father != last_father){
+                            $("#show_place").html($("#show_place").html() + "<br>" + "节点 [" + d.id + "] 切换父节点 " + last_father + " 为 " + cur_father);
+                            return "#FFC125";
+                        }
+                    }
+
+                    if (last_idx - 1 == cur_idx) {
+                        cur_father = node_list_map[cur_idx][d.id];
+                        last_father = node_list_map[cur_idx - 1][d.id];
+                        if (cur_father != last_father){
+                            $("#show_place").html($("#show_place").html() + "<br>" + "节点 [" + d.id + "] 切换父节点 " + last_father + " 为 " + cur_father);
+
+                            return "#FFC125";
+                        }
+                    }
+
+
+                    return "#fff";
+            });
+
+
+            var nodeExit = node.exit().transition()
+                .duration(duration)
+                .attr("transform", function (d) {
+                return "translate(" + source.x + "," + source.y + ")";
+            }).remove();
+
+            nodeExit.select("circle")
+                .attr("r",nodeR)
+            //.attr("width", bbox.getBBox().width)""
+            //.attr("height", bbox.getBBox().height)
+            .attr("stroke", "red")
+                .attr("stroke-width", 1);
+
+            nodeExit.select("text");
+
+            // Update the links…
+            var link = svg.selectAll("path.link")
+                .data(links, function (d) {
+                return d.target.id;
+            });
+
+            // Enter any new links at the parent's previous position.
+            link.enter().insert("path", "g")
+                .attr("class", "link")
+                .attr("x", cirR / 2)
+                .attr("y", cirR / 2)
+                .attr("d", function (d) {
+                var o = {
+                    x: source.x0,
+                    y: source.y0
+                };
+                return diagonal({
+                    source: o,
+                    target: o
+                });
+            });
+
+            // Transition links to their new position.
+            link.transition()
+                .duration(duration)
+                .attr("d", diagonal);
+
+            // Transition exiting nodes to the parent's new position.
+            link.exit().transition()
+                .duration(duration)
+                .attr("d", function (d) {
+                var o = {
+                    x: source.x,
+                    y: source.y
+                };
+                return diagonal({
+                    source: o,
+                    target: o
+                });
+            })
+                .remove();
+
+            // Stash the old positions for transition.
+            nodes.forEach(function (d) {
+                d.x0 = d.x;
+                d.y0 = d.y;
+            });
+        }
+
+
+        // Toggle children on click.
+        function click(d) {
+            if (d.children) {
+                d._children = d.children;
+                d.children = null;
+            } else {
+                d.children = d._children;
+                d._children = null;
+            }
+            update(d);
+        }
+
+
+
+        
+
+	</script>
+</body>
+</html>
